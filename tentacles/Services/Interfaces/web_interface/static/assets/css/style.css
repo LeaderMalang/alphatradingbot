@@ -1,0 +1,212 @@
+:root{
+    --white: #FFFFFF;
+    --black: #000000;
+    --bg-color: #272e5f;
+    --trading-bg:#44519a;
+    --primary: #0091ff;
+    --info:#52bfc8;
+    --success:#51dba1;
+    --purple: #adbaff;
+    --gray:#9fa1b6;
+}
+body, html {
+    height: 100%;
+    width:100%;
+    position:relative;
+    background-color: var(--bg-color);
+}
+a:hover,a{
+    text-decoration: none;
+}
+h1,h2,h3,h4,h5,h6,p{
+    margin-bottom: 0;
+}
+.mt-mb-5{
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+/*Main Menu*/
+.navbar-brand-logo{
+    width: 50px;
+    height: 50px;
+}
+.logo{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+#main-menu .navbar-nav .nav-item:not(:last-of-type){
+    margin-right: 1rem;
+}
+#main-menu .nav-link{
+    color: var(--white);
+}
+#main-menu .nav-link.active{
+    color: var(--info);
+}
+/*Slider*/
+.home-slider{
+    position: relative;
+    height: 650px;
+    overflow: hidden;
+}
+.slider-image{
+    height: 100%;
+}
+.slider-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.slider-text{
+    position: absolute;
+    top: 50%;
+    transform: translate(0,-50%);
+    color: var(--white);
+    background-color: rgba(0,0,0,.45);
+    padding: 1.25rem;
+    border-radius: 8px;
+    max-width: 50ch;
+}
+.slider-text h1{
+    color: var(--white);
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+.slider-text h6{
+    color: var(--primary);
+    text-transform: capitalize;
+    margin-bottom: 1rem;
+}
+.slider-text p{
+    color: var(--purple);
+    text-transform: capitalize;
+    margin-bottom: 1rem;
+}
+/*Btn*/
+.btn-gradient{
+    background-image: linear-gradient(to right,var(--info),var(--success));
+    border-radius: 8px;
+    color: var(--white);
+}
+/*Logo Slider*/
+.crypto-coins{
+    margin-bottom: 2.5rem;
+    color: var(--white);
+    text-align: center;
+    text-transform: capitalize;
+}
+.logo-slider .owl-image{
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+#scrollToBottom{
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: .75rem .5rem;
+    border-radius: 10px;
+    cursor: pointer;
+}
+/*Trading Platform*/
+.trading-card{
+    background-color: var(--trading-bg);
+}
+.trading-card i{
+    color: var(--primary);
+    font-size: 2rem;
+}
+.trading-card p{
+    color: var(--white);
+    margin-top: .25rem;
+    text-transform: capitalize;
+
+}
+/*strategies*/
+.strategy{
+    color: var(--white);
+}
+.strategy img{
+    width: 100%;
+}
+.strategy h1{
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+.strategy h3{
+    font-size: 2.5rem;
+    font-weight: lighter;
+    margin-bottom: 1rem;
+}
+.strategy p{
+    color: var(--purple);
+    margin-bottom: 1.25rem;
+}
+.strategy p i{
+    color: var(--primary);
+    margin-right: .5rem;
+    font-size: 1.25rem;
+}
+/*profit-calculator*/
+.profit-calculator {
+    background-color: var(--trading-bg);
+}
+.profit-calculator .card-body{
+    padding: 3rem;
+}
+.profit-calculator h6,
+.profit-calculator p{
+    color: var(--purple);
+}
+.profit-calculator h6{
+    margin-bottom: .5rem;
+}
+.profit-calculator h2{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    color: var(--white);
+    border-bottom: 2px solid var(--purple);
+    display: flex;
+    justify-content: space-between;
+}
+.profit-calculator h2 span{
+    color: var(--purple);
+}
+/*market-perspective*/
+.market-perspective h4{
+    color: white;
+}
+.market-perspective h4 span{
+    color: var(--purple);
+    font-weight: lighter;
+}
+.market-perspective h4 b{
+    color: var(--info);
+    font-weight: lighter;
+}
+.market-perspective p{
+    color: var(--purple);
+    max-width: 50ch;
+}
+.market-perspective p span{
+    color: var(--gray);
+    font-weight: bold;
+}
+.benefits{
+    max-width: 50ch;
+}
+.benefits-form label{
+    color: var(--purple);
+}
+.forgot-password{
+    color:var(--purple);
+}
+@media screen  and (max-width: 992px){
+    .home-slider{
+        height: auto;
+    }
+    .slider-text h1{
+        font-size: inherit;
+    }
+}

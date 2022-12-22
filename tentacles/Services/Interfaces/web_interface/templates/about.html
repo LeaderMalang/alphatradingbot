@@ -1,0 +1,143 @@
+{% extends "layout.html" %}
+{% set active_page = "about" %}
+{% import 'macros/text.html' as m_text %}
+
+{% block body %}
+<br>
+<div class="card">
+    <div class="card-header">
+        <h2>Your AlphaBot</h2>
+    </div>
+    <div class="card-body">
+        <button route="{{ url_for('commands', cmd='restart') }}" type="button" class="btn btn-warning waves-effect">Restart AlphaBot</button>
+        <button route="{{ url_for('commands', cmd='stop') }}" type="button" class="btn btn-danger waves-effect">Stop AlphaBot</button>
+        {% if current_user.is_authenticated %}
+            <div class="float-right">
+                <a href="{{ url_for('logout') }}" class="btn btn-outline-warning waves-effect">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Lock
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+<br>
+<div class="card">
+    <div class="card-header">
+        <h2>Help us to improve AlphaBot</h2>
+    </div>
+    <div class="card-body">
+        <div class="mb-4">
+            Any question ?
+            Please Checkout the <a target="_blank" rel="noopener" href="{{OCTOBOT_WEBSITE_URL}}">AlphaBot official website</a>
+            and have a look at our
+            <a target="_blank" rel="noopener" href="{{OCTOBOT_DOCS_URL}}/usage/frequently-asked-questions-faq">
+                Frequently ask question (FAQ) section
+            </a>
+            first !
+        </div>
+        {% if not IS_CLOUD %}
+        <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="metricsCheckbox" update-url="{{ url_for('metrics_settings') }}" {{ 'checked' if metrics_enabled else ''}}>
+            <label class="custom-control-label" for="metricsCheckbox">Share</label> anonymous data to help the AlphaBot Community
+            <p>This will grant you access to the <a href="{{ url_for('community_metrics') }}"> AlphaBot Community metrics</a> and greatly help the AlphaBot team to figure out the best ways to improve AlphaBot.
+                <i class="fa fa-question" data-toggle="tooltip" data-placement="top"
+                    title="Shared data are:
+Bot version and running time, trader type, the name of used exchanges, tentacles, traded pairs, profile name and notification systems.
+Overall portfolio value in reference market, traded volumes and profitability are shared to evaluate strategies performances.
+Finally the current environment details AlphaBot is running on and the way you support the project (if you are) are also shared as
+well as if you are emitting or receiving signals.
+Nothing else is ever shared: no personal data, no identification enabling data.">
+                </i>
+                It won't slow your AlphaBot down.
+            </p>
+        </div>
+        {% endif %}
+        <hr>
+        <div>
+            <p>
+                In order to improve AlphaBot, your user feedback is extremely helpful. The best way to make this project better and better is by telling us about your experience
+                (positive and negative) when using AlphaBot.
+            </p>
+            <a update-url="{{ url_for('api.user_feedback') }}" href="" id=feedbackButton class="btn btn-primary waves-effect disabled" target="_blank" rel="noopener">
+                Tell us what you think about AlphaBot
+            </a>
+            <a href="{{ OCTOBOT_FEEDBACK_URL }}" id=suggestButton class="btn btn-primary waves-effect" target="_blank" rel="noopener">
+                Suggest a feature for AlphaBot
+            </a>
+        </div>
+    </div>
+</div>
+<br>
+
+<div class="card" id="donations">
+    <div class="card-header">
+        <h2>Support the AlphaBot project</h2>
+    </div>
+    <div class="card-body">
+        <p>
+            We are <a target="_blank" rel="noopener" href="{{OCTOBOT_WEBSITE_URL}}/about"> two developers working on the project on our free time</a>.
+            If you enjoy AlphaBot, tips are much appreciated <i class="far fa-smile"></i>
+        </p>
+        <div><i class="fab fa-bitcoin"></i> 1DHfjxD3C4e2Xi37FsoTbVJ6e4zNtesiwf</div>
+        <div> <i class="fab fa-ethereum"></i> 0xF154aA84B66e2bCacd74e201496D9ac3f81234D5</div>
+        <div> Binance Chain: bnb1ajj4dupn8xadrueuemm7gvdyp0pgslqs7zxmmv</div>
+        <div> Binance Smart Chain: 0x26927FC73d0c474D064ac3ae2E02A209c32C03e1</div>
+
+        <a href="{{ OCTOBOT_DONATION_URL }}" id=register-donation-button class="btn btn-primary waves-effect" target="_blank" rel="noopener">
+            Register a donation on my community account
+        </a>
+    </div>
+</div>
+<br>
+
+<div class="card">
+    <div class="card-header"><h2>Disclaimer</h2></div>
+    <div class="card-body">
+        {{ m_text.text_lines(disclaimer) }}
+        <p>
+            <a href="{{ url_for('terms') }}">
+                Terms and conditions
+            </a>
+        </p>
+    </div>
+</div>
+<br>
+
+<div class="card" id="beta-program">
+    <div class="card-header"><h2>AlphaBot Beta Tester program</h2></div>
+    <div class="card-body">
+        <p>
+            You can help the team improving AlphaBot by testing features in advance through the beta tester group.
+            Registering to the beta tester group will grant you access to major new features weeks in advance as well
+            as a direct communication channel to the AlphaBot team to share your feedback and ideas before new versions are
+            released to the public.
+            <a href="{{OCTOBOT_DOCS_URL}}/advanced_usage/beta-program" target="_blank" rel="noopener">
+                More info on the beta tester program
+            </a>
+        </p>
+        <div class="custom-control custom-switch my-2">
+            <input type="checkbox" class="custom-control-input" id="beta-checkbox" update-url="{{ url_for('beta_env_settings') }}"
+                   {{ 'checked' if beta_env_enabled_in_config else ''}}
+            >
+            <label class="custom-control-label" for="beta-checkbox">Connect to the beta environment</label>
+        </div>
+        <div class="alert alert-info">
+            When the beta environment is enabled, you will be connected to the "in development" version of {{OCTOBOT_COMMUNITY_URL}}.
+            Available elements will be different from normal ones and your AlphaBot might produce unexpected behaviors.
+            Only enable it when actively beta testing and disable it afterwards.
+        </div>
+
+        <p>
+            <a href="{{ octobot_beta_program_form_url }}" class="btn btn-primary waves-effect" target="_blank" rel="noopener">
+                Register to the beta tester program
+            </a>
+        </p>
+    </div>
+</div>
+<br>
+{% endblock %}
+
+{% block additional_scripts %}
+<script src="{{ url_for('static', filename='js/components/commands.js', u=LAST_UPDATED_STATIC_FILES) }}"></script>
+{% endblock additional_scripts %}

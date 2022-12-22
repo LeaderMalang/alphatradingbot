@@ -114,7 +114,7 @@ backtesting/collector/data/
 backtesting/data/
 
 # Tentacles
-tentacles
+#tentacles
 downloaded_temp_tentacles
 
 # User config

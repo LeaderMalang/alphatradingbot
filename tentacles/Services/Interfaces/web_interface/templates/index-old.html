@@ -1,0 +1,146 @@
+{% extends "layout.html" %}
+{% set active_page = "home" %}
+{% block body %}
+    <div update-url="{{ url_for('api.announcements') }}" class="alert alert-danger text-center d-none" role="alert" id="annoncementsAlert"></div>
+    <div class="d-none alert alert-success text-center mt-2" role="alert">
+        <h5 class="d-none d-sm-inline"><span class="d-none d-md-inline"><i class="far fa-bell"></i> Good news ! </span>AlphaBot version <span update-url="{{ url_for('api.upgrade_version') }}" id="upgradeVersion"></span> is available.</h5><button route="{{ url_for('commands', cmd='update') }}" type="button" class="btn btn-warning waves-effect">Upgrade now <i class="fas fa-cloud-download-alt"></i></button>
+    </div>
+    <span id="exchange-specific-data">
+        {% if is_in_stating_community_env() %}
+        <div class="card mt-2 mt-md-4">
+            <div class="card-header"><h2>
+                Welcome to the AlphaBot beta environment
+                </h2>
+            </div>
+            <div class="card-body card-text">
+                <div class="alert alert-info">
+                    When the beta environment is enabled, you will be connected to the "in development"
+                    version of Astrolab (<a href="{{OCTOBOT_COMMUNITY_URL}}">{{OCTOBOT_COMMUNITY_URL}})</a>. The beta Astrolab has its own accounts and products.
+                    Please login using your beta account.
+                </div>
+                <div>
+                    <div>
+                        Beta tentacles with early access features might be available.
+                    </div>
+                    <div>
+                        <button class="btn btn-primary waves-effect" id="install-beta-tentacles"
+                                update-url="{{url_for('advanced.install_official_tentacle_packages', use_beta_tentacles=True)}}">
+                            Install / Update beta tentacles
+                        </button>
+                        <button class="btn btn-outline-primary waves-effect" id="install-regular-tentacles"
+                                update-url="{{url_for('advanced.install_official_tentacle_packages', use_beta_tentacles=False)}}">
+                            Reinstall regular tentacles
+                        </button>
+                    </div>
+                    <div class='progress' id='packages_action_progess_bar' style='display: none;'>
+                        <div class='progress-bar progress-bar-striped progress-bar-animated' role='progressbar' aria-valuenow='100' aria-valuemin='0' aria-valuemax='100' style='width: 100%;'></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                You can disable the beta environment and go back to the regular one at anytime from the
+                <a href="{{ url_for('about', _anchor='beta-program') }}"> about tab</a>.
+            </div>
+        </div>
+        {% endif %}
+        {% if startup_messages %}
+        <div class="card mt-2 mt-md-4">
+            <div class="card-header">
+                <h2>
+                    Warning
+                </h2>
+            </div>
+            <div class="card-body card-text">
+                <div class="alert alert-warning text-center my-0" role="alert">
+                {% for startup_message in startup_messages %}
+                    <div>
+                        {{ startup_message }}
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        <div class="card mt-2 mt-md-4">
+            <div class="card-header"><h2>
+                Profitability
+                <a class="float-right blue-text" target="_blank" rel="noopener noreferrer" href="{{OCTOBOT_DOCS_URL}}/usage/understanding-profitability">
+                    <i class="fa fa-question"></i>
+                </a>
+                </h2></div>
+            <div class="card-body card-text" id="profitability_graph">
+                <div id="graph-profitability-description"></div>
+                <canvas id="graph-profitability" height="30%"></canvas>
+            </div>
+        </div>
+        <br>
+        <div class="card">
+            <div class="card-header"><h2>Watched markets</h2></div>
+            <div class="card-body d-none text-center" id="loadingMarketsDiv">
+                <h2>
+                    AlphaBot is starting, markets will be refreshed when available.
+                </h2>
+            </div>
+            <div class="card-body text-center" name="loadingSpinner">
+                <h2>
+                    <i class="fa fa-spinner fa-spin"></i>
+                </h2>
+            </div>
+            {% if backtesting_mode %}
+                <div class="card-body" id="first_symbol_graph" update-url="{{ url_for('first_symbol') }}" backtesting_mode={{backtesting_mode}}>
+                    <div id="graph-symbol-price"></div>
+                </div>
+            {% else %}
+                {% for pair in watched_symbols %}
+                    <div class="card-body candle-graph" id="{{pair}}_graph" backtesting_mode={{backtesting_mode}}>
+                        <div class="watched-symbol-graph" id="{{pair}}_graph-symbol-price" symbol="{{pair}}"></div>
+                    </div>
+                {% endfor %}
+                <div class="card-body candle-graph d-none" id="first_symbol_graph" update-url="{{ url_for('first_symbol') }}" backtesting_mode={{backtesting_mode}}>
+                    <div id="graph-symbol-price"></div>
+                </div>
+                {% if not watched_symbols %}
+                    <div class="card-footer">No watched markets: using a default one. You can add <a href="#"><i class="far fa-star text-white" aria-label="Watched markets star"></i></a> watched markets in the <a href="{{ url_for('trading') }}">trading section</a>.</div>
+                {% endif %}
+            {% endif %}
+        </div>
+    </span>
+    <br>
+    {% if display_tutorial_link %}
+        <div class="modal fade" id="tutorialModal" tabindex="-1" role="dialog" aria-labelledby="tutorialModalTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="tutorialModalTitle">Welcome to AlphaBot !</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                  <p>
+                      We prepared a quick tutorial on how to easily use AlphaBot. Feel free to check it out if you haven't
+                      already.
+                  </p>
+                  <div class="my-4 text-center">
+                  <a class="btn btn-primary waves-effect" href="{{url_for('tutorial')}}">Checkout the tutorial</a>
+                  </div>
+                  <p>
+                      You can always find this tutorial later in the <span class="font-weight-bold">Help</span> tab.<br/>
+                      We hope you will enjoy AlphaBot.
+                  </p>
+                  <p class="text-right">
+                      The AlphaBot team
+                  </p>
+              </div>
+            </div>
+          </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block additional_scripts %}
+    <script src="{{ url_for('static', filename='js/common/custom_elements.js', u=LAST_UPDATED_STATIC_FILES) }}"></script>
+    <script src="{{ url_for('static', filename='js/common/candlesticks.js', u=LAST_UPDATED_STATIC_FILES) }}"></script>
+    <script src="{{ url_for('static', filename='js/components/dashboard.js', u=LAST_UPDATED_STATIC_FILES) }}"></script>
+    <script src="{{ url_for('static', filename='js/components/tentacles_configuration.js', u=LAST_UPDATED_STATIC_FILES) }}"></script>
+{% endblock additional_scripts %}

@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Trading Bot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/bootstrap.css', u=LAST_UPDATED_STATIC_FILES) }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/all.css', u=LAST_UPDATED_STATIC_FILES) }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/owl.carousel.css', u=LAST_UPDATED_STATIC_FILES) }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/owl.theme.default.css', u=LAST_UPDATED_STATIC_FILES) }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/style.css', u=LAST_UPDATED_STATIC_FILES) }}">
+</head>
+
+<body>
+    <!--Main Menu-->
+    <div class="container">
+        <nav class="navbar navbar-expand-lg bg-transparent">
+            <a class="navbar-brand navbar-brand-logo" href="#">
+                <img src="{{ url_for('static', filename='assets/images/logo.png', u=LAST_UPDATED_STATIC_FILES) }}" alt="Logo Image" class="logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-menu"
+                aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="main-menu">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('trading') }}">Trading</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('portfolio') }}">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('profile') }}">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('accounts') }}">Accounts</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link btn-gradient" href="{{ url_for('about') }}">About</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <!--Header-->
+    <div class="home-slider">
+        <div class="slider-image">
+            <img src="{{ url_for('static', filename='assets/images/slide.jpg', u=LAST_UPDATED_STATIC_FILES) }}" alt="">
+        </div>
+        <div class="container">
+            <div class="slider-text">
+                <h1>Introducing Alpha Bot</h1>
+                <h6>Specialized Next Generation artificial intellisense trading bot.</h6>
+                <p>intellisense ai machine learning</p>
+            </div>
+        </div>
+    </div>
+    <!--Logo Slider-->
+    <div class="container mt-mb-5 mb-2">
+        <h6 class="crypto-coins"><i class="fas fa-arrow-down" id="scrollToBottom"></i></h6>
+    </div>
+    <div class="container mt-mb-5">
+        <h6 class="crypto-coins">crypto coins</h6>
+        <div class="owl-carousel owl-theme logo-slider">
+            <div class="item"><img src="{{ url_for('static', filename='assets/images/coin-1.png', u=LAST_UPDATED_STATIC_FILES) }}" alt="Coin" class="owl-image"></div>
+            <div class="item"><img src="{{ url_for('static', filename='assets/images/coin-2.png', u=LAST_UPDATED_STATIC_FILES) }}" alt="Coin" class="owl-image"></div>
+            <div class="item"><img src="{{ url_for('static', filename='assets/images/coin-3.png', u=LAST_UPDATED_STATIC_FILES) }}" alt="Coin" class="owl-image"></div>
+            <div class="item"><img src="{{ url_for('static', filename='assets/images/coin-4.png', u=LAST_UPDATED_STATIC_FILES) }}" alt="Coin" class="owl-image"></div>
+            <div class="item"><img src="{{ url_for('static', filename='assets/images/coin-5.png', u=LAST_UPDATED_STATIC_FILES) }}" alt="Coin" class="owl-image"></div>
+            <div class="item"><img src="{{ url_for('static', filename='assets/images/coin-6.png', u=LAST_UPDATED_STATIC_FILES) }}" alt="Coin" class="owl-image"></div>
+            <div class="item"><img src="{{ url_for('static', filename='assets/images/coin-7.png', u=LAST_UPDATED_STATIC_FILES) }}" alt="Coin" class="owl-image"></div>
+            <div class="item"><img src="{{ url_for('static', filename='assets/images/coin-8.png', u=LAST_UPDATED_STATIC_FILES) }}" alt="Coin" class="owl-image"></div>
+            <div class="item"><img src="{{ url_for('static', filename='assets/images/coin-9.png', u=LAST_UPDATED_STATIC_FILES) }}" alt="Coin" class="owl-image"></div>
+            <div class="item"><img src="{{ url_for('static', filename='assets/images/coin-10.png', u=LAST_UPDATED_STATIC_FILES) }}" alt="Coin" class="owl-image"></div>
+        </div>
+    </div>
+    <div class="container mt-mb-5">
+        <h5 class="crypto-coins mb-2">most trusted trading platform</h5>
+        <h5 class="crypto-coins">operated by alpha bot</h5>
+        <div class="row justify-content-center">
+            <div class="col-lg-3 mb-2">
+                <div class="card trading-card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-shield-alt"></i>
+                        <p>FoolProof Security pic</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 mb-2">
+                <div class="card trading-card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-exchange-alt"></i>
+                        <p>easy to transfer</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 mb-2">
+                <div class="card trading-card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-atom"></i>
+                        <p>no fear of loss</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Strategies-->
+    <div class="container mt-mb-5">
+        <div class="row strategies">
+            <div class="col-lg-6 strategy">
+                <img src="{{ url_for('static', filename='assets/images/stratergy.png', u=LAST_UPDATED_STATIC_FILES) }}" alt="">
+            </div>
+            <div class="col-lg-6 strategy">
+                <h1>Our Strategies</h1>
+                <h3>First of its kind to use three different strategies.</h3>
+                <p><i class="fas fa-pound-sign"></i> By using the sentiment from thousands of user patterns.</p>
+                <p><i class="fas fa-ruble-sign"></i> Our bot has built-in knowledge of trader's books.</p>
+                <p><i class="fas fa-rupee-sign"></i> Plus using paid indicators from the biggest crypto exchange.</p>
+                <p>To ensure more accurate and successful trade.</p>
+            </div>
+        </div>
+    </div>
+    <!--profit calculator-->
+    <div class="container mt-mb-5">
+        <h3 class="text-center text-white mb-5">Calculate Your Profit</h3>
+        <div class="card profit-calculator">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-lg-5">
+                        <p>Your invest at 1st stage</p>
+                        <h2>1000 <span>$</span></h2>
+                    </div>
+                    <div class="col-lg-2 text-center">
+                        <i class="text-white fas fa-arrow-right"></i>
+                    </div>
+                    <div class="col-lg-5">
+                        <p>Your profit at 5th stage</p>
+                        <h2>133 330 <span>$</span></h2>
+                    </div>
+                </div>
+                <div class="row align-items-center mt-5">
+                    <div class="col-lg-3">
+                        <h6>Stage 2</h6>
+                        <h3 class="text-white">1000 <span>$</span></h3>
+                    </div>
+                    <div class="col-lg-3">
+                        <h6>Stage 3</h6>
+                        <h3 class="text-white">3330 <span>$</span></h3>
+                    </div>
+                    <div class="col-lg-3">
+                        <h6>Stage 4</h6>
+                        <h3 class="text-white">8300 <span>$</span></h3>
+                    </div>
+                    <div class="col-lg-3">
+                        <h6>Stage 5</h6>
+                        <h3 class="text-white">133 330 <span>$</span></h3>
+                    </div>
+                </div>
+                <div class="text-center mt-5">
+                    <a class="btn px-5 btn-gradient" href="#">Buy Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Market Place-->
+    <div class="container mt-mb-5">
+        <div class="market-perspective">
+            <h3 class="text-center text-white mb-5">Market Perspective</h3>
+            <h4><span>E-commerce boost</span> <b>/</b> Customer market growth</h4>
+            <div class="col-xl-12 charts my-5">
+                <div class="chart-container">
+                    <canvas id="month_wise" height="200" width="200"></canvas>
+                </div>
+                <div class="mt-3">
+                    <p><span>Disclaimer:</span> we can not guarantee your profit or loss. That is determined by your
+                        investment and the market trend</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Deposits-->
+    <div class="container mt-mb-5">
+        <div class="row">
+            <div class="col-lg-6 strategy">
+                <div class="benefits">
+                    <h1>Your Benefits</h1>
+                    <h3>Whether you are Novice or Pro at crypto trading</h3>
+                    <p>Alpha bot is the place for you. Unlike most bots that charged upto $5,000 to start not to mention
+                        $5,000 or more to invest,minimum. Alpha Bot charged a small monthly service fee. And
+                        start trading with a minimum investment, that fits your budget.</p>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card profit-calculator">
+                    <div class="card-body benefits-form">
+                        <form action="">
+                            <div class="row align-items-center">
+                                <div class="col-lg-12">
+                                    <div class="mb-3">
+                                        <label class="form-label">Email</label>
+                                        <input type="email" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="mb-3">
+                                        <label class="form-label">password</label>
+                                        <input type="password" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 text-end">
+                                    <a href="#" class="forgot-password">FORGOT PASSWORD</a>
+                                </div>
+                                <div class="col-lg-12 text-center">
+                                    <input type="submit" class="btn btn-gradient px-5" value="Login">
+                                </div>
+                                <div class="col-lg-12 text-center mt-3">
+                                    <span class="forgot-password">Not on Bitarea yet? <a href="#"
+                                            class="text-primary">Register</a></span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Market Place-->
+    <div class="container mt-mb-5">
+        <div class="market-perspective">
+            <h3 class="text-center text-white mb-5">Don't Wait. Use BTC Right Now</h3>
+            <div class="row align-items-center">
+                <div class="col-lg-11">
+                    <div class="owl-carousel owl-theme footer-slider">
+                        <!--slide 1-->
+                        <div class="row align-items-center">
+                            <div class="col-lg-6">
+                                <img src="{{ url_for('static', filename='assets/images/footer-slider.png', u=LAST_UPDATED_STATIC_FILES) }}" alt="Coin" class="owl-image">
+                            </div>
+                            <div class="col-lg-6 strategy">
+                                <h1>Deposits</h1>
+                                <h3>Make deposits to earn more</h3>
+                                <p>increase your income by holding BTC in Bitcoin wallet.Keep your coins on BTC wallet
+                                    for 90 days and get upto 7% interest rate.</p>
+                            </div>
+                        </div>
+                        <!--slide 2-->
+                        <div class="row align-items-center">
+                            <div class="col-lg-6">
+                                <img src="{{ url_for('static', filename='assets/images/footer-slider.png', u=LAST_UPDATED_STATIC_FILES) }}" alt="Coin" class="owl-image">
+                            </div>
+                            <div class="col-lg-6 strategy">
+                                <h1>Deposits</h1>
+                                <h3>Make deposits to earn more</h3>
+                                <p>increase your income by holding BTC in Bitcoin wallet.Keep your coins on BTC wallet
+                                    for 90 days and get upto 7% interest rate.</p>
+                            </div>
+                        </div>
+                        <!--slide 3-->
+                        <div class="row align-items-center">
+                            <div class="col-lg-6">
+                                <img src="{{ url_for('static', filename='assets/images/footer-slider.png', u=LAST_UPDATED_STATIC_FILES) }}" alt="Coin" class="owl-image">
+                            </div>
+                            <div class="col-lg-6 strategy">
+                                <h1>Deposits</h1>
+                                <h3>Make deposits to earn more</h3>
+                                <p>increase your income by holding BTC in Bitcoin wallet.Keep your coins on BTC wallet
+                                    for 90 days and get upto 7% interest rate.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-1 text-center">
+                    <a href="#" class="text-white">
+                        <h5 class="mb-2"><i class="fas fa-arrow-right"></i></h5>
+                        <h6>
+                            <p>Sell goods</p>
+                        </h6>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Scripts -->
+    <script src="{{ url_for('static', filename='assets/js/jquery.js', u=LAST_UPDATED_STATIC_FILES) }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/bootstrap.js', u=LAST_UPDATED_STATIC_FILES) }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/owl.carousel.min.js', u=LAST_UPDATED_STATIC_FILES) }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/chart.js', u=LAST_UPDATED_STATIC_FILES) }}"></script>
+    <script>
+        $(function ($) {
+            var path = window.location.href; // because the 'href' property of the DOM element is the absolute path
+            $('#main-menu a').each(function () {
+                if (this.href === path) {
+                    $(this).addClass('active');
+                }
+            });
+            //Scroll to Bottom
+            $('#scrollToBottom').bind("click", function () {
+                $('html, body').animate({ scrollTop: $(document).height() }, 1200);
+                return false;
+            });
+            //Slider
+            var owl = $('.logo-slider');
+            owl.owlCarousel({
+                items: 10,
+                loop: true,
+                margin: 10,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 3,
+                    },
+                    600: {
+                        items: 6,
+                    },
+                    1000: {
+                        items: 10,
+                    }
+                }
+            });
+            //Chart
+            var myChart = new Chart(
+                document.getElementById('month_wise'),
+                config = {
+                    type: 'line',
+                    data: {
+                        labels: [2016, 2017, 2018, 2019, 2020, 2021, 2022],
+                        datasets: [
+                            {
+                                label: '',
+                                data: [110, 135, 160, 185, 210, 320, 400],
+                                borderColor: '#707070',
+                                backgroundColor: '#ffffff',
+                                tension: 0.4,
+                            },
+                        ]
+                    },
+                    options: {
+                        scales: {
+                            x: {
+                                ticks: {
+                                    color: ['#a5a7bb', '#d2d3dd', '#d2d3dd', '#e7e8ed', '#ffffff', '#ffffff', '#ffffff'],
+                                    font: {
+                                        size: 20,
+                                        weight: 'bold'
+                                    }
+                                }
+                            },
+                            y: {
+                                display: true,
+                                title: {
+                                    display: true,
+                                    text: 'Thousands Stores',
+                                    color: '#fff',
+                                    font: {
+                                        size: 15,
+                                        weight: 'bold'
+                                    }
+                                },
+                            }
+                        },
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'left',
+                                align: 'middle',
+                                labels: {
+                                    boxWidth: 0,
+                                    boxHeight: 0
+                                },
+                            },
+                        },
+                    },
+                });
+            //Footer Slider
+            var owl = $('.footer-slider');
+            owl.owlCarousel({
+                items: 1,
+                loop: true,
+                dots: true,
+                nav: true,
+                margin: 10,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1,
+                    },
+                    600: {
+                        items: 1,
+                    },
+                    1000: {
+                        items: 1,
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
